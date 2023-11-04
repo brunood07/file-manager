@@ -1,23 +1,22 @@
 import { Request, Response } from "express";
 import { z } from "zod";
-import { CreateUserUseCase } from "../usecases/create-user-use-case";
+import { AuthenticateUserUseCase } from "../usecases/authenticate-user-use-case";
 import { PrismaUsersRepository } from "../repositories/prisma/prisma-users-repository";
 
-const createUserSchema = z.object({
-  full_name: z.string(),
+const authenticateUserSchema = z.object({
   username: z.string(),
   password: z.string()
 });
 
-export class CreateUserController {
+export class AuthenticateUserController {
   handle = async (req: Request, res: Response): Promise<Response> => {
     try {
-      const body = createUserSchema.parse(req.body);
+      const body = authenticateUserSchema.parse(req.body);
 
-      const service = new CreateUserUseCase(new PrismaUsersRepository());
+      const service = new AuthenticateUserUseCase(new PrismaUsersRepository());
       const result = await service.execute(body);
-  
-      return res.status(201).send();
+
+      return res.status(200).send(result);
     } catch (err) {
       return res.status(500).send({ err: err });
     }
