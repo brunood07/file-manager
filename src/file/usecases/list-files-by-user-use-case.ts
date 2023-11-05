@@ -10,15 +10,15 @@ interface ListFilesByUserUseCaseResponse {
 }
 
 export class ListFilesByUserUseCase {
-    constructor(private filesRepository: FilesRepository) {}
+  constructor(private filesRepository: FilesRepository) {}
 
-    execute = async (data: ListFilesByUserUseCaseRequest): Promise<ListFilesByUserUseCaseResponse> => {
-        const { userId } = data;
+  execute = async (data: ListFilesByUserUseCaseRequest): Promise<ListFilesByUserUseCaseResponse> => {
+    const { userId } = data;
 
-        const files = await this.filesRepository.findByUserId(userId);
+    const files = await this.filesRepository.findByUserId(userId);
 
-        return {
-            files
-        };
+    return {
+      files
     };
+  };
 }

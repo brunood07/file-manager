@@ -8,23 +8,23 @@ export interface CreateUserUseCaseRequest {
 }
 
 export class CreateUserUseCase {
-    constructor(private usersRepository: UsersRepository) {}
+  constructor(private usersRepository: UsersRepository) {}
 
-    execute = async (data: CreateUserUseCaseRequest): Promise<void> => {
-        const { full_name, password, username } = data;
+  execute = async (data: CreateUserUseCaseRequest): Promise<void> => {
+    const { full_name, password, username } = data;
 
-        const userExists = await this.usersRepository.findByUsername(username);
+    const userExists = await this.usersRepository.findByUsername(username);
 
-        if (userExists) {
-            throw new Error('User already exists');
-        }
+    if (userExists) {
+      throw new Error('User already exists');
+    }
 
-        const passwordHash = await hash(password, 8);
+    const passwordHash = await hash(password, 8);
 
-        await this.usersRepository.create({
-            full_name,
-            username,
-            password: passwordHash,
-        });
-    };
+    await this.usersRepository.create({
+      full_name,
+      username,
+      password: passwordHash,
+    });
+  };
 }

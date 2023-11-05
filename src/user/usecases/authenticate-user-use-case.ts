@@ -13,30 +13,30 @@ interface AuthenticateUserUseCaseResponse {
 }
 
 export class AuthenticateUserUseCase {
-    constructor(private usersRepository: UsersRepository) {}
+  constructor(private usersRepository: UsersRepository) {}
 
-    execute = async (data: AuthenticateUserUseCaseRequest): Promise<AuthenticateUserUseCaseResponse> => {
-        const { password, username } = data;
+  execute = async (data: AuthenticateUserUseCaseRequest): Promise<AuthenticateUserUseCaseResponse> => {
+    const { password, username } = data;
 
-        const user = await this.usersRepository.findByUsername(username);
+    const user = await this.usersRepository.findByUsername(username);
 
-        if (!user) {
-            throw new Error('username of password invalid');
-        }
+    if (!user) {
+      throw new Error('username of password invalid');
+    }
 
-        const passwordMatch = await compare(password, user.password);
+    const passwordMatch = await compare(password, user.password);
 
-        if (!passwordMatch) {
-            throw new Error('username of password invalid');
-        }
+    if (!passwordMatch) {
+      throw new Error('username of password invalid');
+    }
 
-        const token = sign({ username }, String(process.env.CLIENT_SECRET_KEY), {
-            subject: user.id,
-            expiresIn: '1d'
-        });
+    const token = sign({ username }, String(process.env.CLIENT_SECRET_KEY), {
+      subject: user.id,
+      expiresIn: '1d'
+    });
 
-        return {
-            access_token: token
-        };
-    }; 
+    return {
+      access_token: token
+    };
+  }; 
 }
