@@ -1,4 +1,4 @@
-import { User } from "@prisma/client";
+import { SavedFiles, User } from "@prisma/client";
 
 export interface UsersRepository {
   create(data: any): Promise<void>;
