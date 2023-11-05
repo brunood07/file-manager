@@ -7,7 +7,7 @@ const app = express();
 
 app.use(express.json());
 app.use(fileUpload());
-app.use("/users", usersRoutes);
-app.use("/blobs", fileRoutes);
+app.use('/users', usersRoutes);
+app.use('/blobs', fileRoutes);
 
 export { app };

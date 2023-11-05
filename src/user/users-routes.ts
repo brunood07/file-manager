@@ -8,7 +8,7 @@ const usersRoutes = Router();
 const createUserController = new CreateUserController();
 const authenticateUserController = new AuthenticateUserController();
 
-usersRoutes.post("/", createUserController.handle);
-usersRoutes.post("/session", authenticateUserController.handle);
+usersRoutes.post('/', createUserController.handle);
+usersRoutes.post('/session', authenticateUserController.handle);
 
 export { usersRoutes };
