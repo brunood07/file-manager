@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { makeListFilesByUserUseCase } from '../factories/make-list-files-by-user-use-case';
+import { makeListFilesByUserUseCase } from './factories/make-list-files-by-user-use-case';
 
 export class ListFilesByUserController {
   handle = async (req: Request, res: Response): Promise<Response> => {

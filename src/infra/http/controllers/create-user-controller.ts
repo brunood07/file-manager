@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { z } from 'zod';
-import { makeCreateUserUseCase } from '../factories/make-create-user-use-case';
+import { makeCreateUserUseCase } from './factories/make-create-user-use-case';
 
 const createUserSchema = z.object({
   full_name: z.string(),

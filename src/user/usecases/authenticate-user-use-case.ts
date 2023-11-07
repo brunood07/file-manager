@@ -2,6 +2,7 @@ import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 
 import { UsersRepository } from '../repositories/users-repository';
+import { env } from '../../infra/env';
 
 interface AuthenticateUserUseCaseRequest {
   username: string;
@@ -30,7 +31,7 @@ export class AuthenticateUserUseCase {
       throw new Error('username of password invalid');
     }
 
-    const token = sign({ username }, String(process.env.CLIENT_SECRET_KEY), {
+    const token = sign({ username }, env.CLIENT_SECRET_KEY, {
       subject: user.id,
       expiresIn: '1d'
     });

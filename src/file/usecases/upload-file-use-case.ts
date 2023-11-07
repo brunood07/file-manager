@@ -1,6 +1,6 @@
 import { BlobUploadCommonResponse } from '@azure/storage-blob';
 import { FilesRepository } from '../repositories/files-repository';
-import { StorageInterface } from '../storage/storage';
+import { StorageInterface } from '../../infra/storage/storage';
 
 export interface UploadFileUseCaseRequest {
   blobName: string;

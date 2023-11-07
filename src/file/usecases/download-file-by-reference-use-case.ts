@@ -1,4 +1,4 @@
-import { StorageInterface } from '../storage/storage';
+import { StorageInterface } from '../../infra/storage/storage';
 
 interface DownloadFileByReferenceUseCaseRequest {
   file_reference: string;

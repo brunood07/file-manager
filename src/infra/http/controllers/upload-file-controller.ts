@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { UploadedFile } from 'express-fileupload';
-import { makeUploadFileUseCase } from '../factories/make-upload-file-use-case';
+import { makeUploadFileUseCase } from './factories/make-upload-file-use-case';
 
 export class UploadFileController {
   handle = async (req: Request, res: Response): Promise<Response> => {

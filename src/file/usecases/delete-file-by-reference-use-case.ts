@@ -1,5 +1,5 @@
+import { StorageInterface } from '../../infra/storage/storage';
 import { FilesRepository } from '../repositories/files-repository';
-import { StorageInterface } from '../storage/storage';
 
 interface DeleteFileByReferenceUseCaseRequest {
   file_reference: string;

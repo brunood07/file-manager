@@ -1,10 +1,9 @@
 import { Router } from 'express';
-
-import { UploadFileController } from './controllers/upload-file-controller';
-import { isAuthenticated } from '../infra/middlewares/is-authenticated';
-import { ListFilesByUserController } from './controllers/list-files-by-user-controller';
-import { DownloadFileByReferenceController } from './controllers/download-file-by-reference-controller';
-import { DeleteFileByReferenceController } from './controllers/delete-file-by-reference-controller';
+import { isAuthenticated } from '../../middlewares/is-authenticated';
+import { DeleteFileByReferenceController } from '../controllers/delete-file-by-reference-controller';
+import { DownloadFileByReferenceController } from '../controllers/download-file-by-reference-controller';
+import { ListFilesByUserController } from '../controllers/list-files-by-user-controller';
+import { UploadFileController } from '../controllers/upload-file-controller';
 
 const fileRoutes = Router();
 

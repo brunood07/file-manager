@@ -1,7 +1,7 @@
 import express from 'express';
 import fileUpload from 'express-fileupload';
-import { usersRoutes } from './user/users-routes';
-import { fileRoutes } from './file/fileRoutes';
+import { fileRoutes } from './infra/http/routers/file-routes';
+import { usersRoutes } from './infra/http/routers/users-routes';
 
 const app = express();
 

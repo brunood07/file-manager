@@ -1,12 +1,13 @@
 import { BlobServiceClient, BlobUploadCommonResponse, ContainerClient } from '@azure/storage-blob';
 import { DownloadResponseProps, StorageInterface, UploadProps } from './storage';
+import { env } from '../env';
 
 export class AzureStorage implements StorageInterface {
   private containerClient: ContainerClient;
 
   constructor() {
-    const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
-    const sasToken = process.env.AZURE_STORAGE_SAS_TOKEN;
+    const accountName = env.AZURE_STORAGE_ACCOUNT_NAME;
+    const sasToken = env.AZURE_STORAGE_SAS_TOKEN;
     if (!accountName) throw Error('Azure Storage accountName not found');
     if (!sasToken) throw Error('Azure Storage accountKey not found');
   

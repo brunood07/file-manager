@@ -1,15 +1,15 @@
 import { Request, Response } from 'express';
-import { makeDeleteFileByReferenceUseCase } from '../factories/delete-file-by-reference-use-case';
+import { makeDownloadFileByReferenceUseCase } from './factories/download-file-by-reference-use-case';
 
-export class DeleteFileByReferenceController {
+export class DownloadFileByReferenceController {
   handle = async (req: Request, res: Response): Promise<Response> => {
     try {
       const params = req.params;
       
-      const service = makeDeleteFileByReferenceUseCase();
+      const service = makeDownloadFileByReferenceUseCase();
       const result = await service.execute({ file_reference: params.reference });
      
-      return res.status(204).send(result);
+      return res.status(200).send({ url: result.fileUrl });
     } catch (err) {
       return res.status(500).send({ err: err });
     }

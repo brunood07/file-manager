@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { z } from 'zod';
-import { makeAuthenticateUserUseCase } from '../factories/make-authenticate-user-use-case';
+import { makeAuthenticateUserUseCase } from './factories/make-authenticate-user-use-case';
 
 const authenticateUserSchema = z.object({
   username: z.string(),
