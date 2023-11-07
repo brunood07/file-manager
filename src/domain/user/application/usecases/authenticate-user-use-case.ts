@@ -2,7 +2,8 @@ import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 
 import { UsersRepository } from '../repositories/users-repository';
-import { env } from '../../infra/env';
+import { env } from '../../../../infra/env';
+import { WrongCredentialsError } from '../../../../core/errors/wrong-credentials-error';
 
 interface AuthenticateUserUseCaseRequest {
   username: string;
@@ -22,13 +23,13 @@ export class AuthenticateUserUseCase {
     const user = await this.usersRepository.findByUsername(username);
 
     if (!user) {
-      throw new Error('username of password invalid');
+      throw new WrongCredentialsError();
     }
 
     const passwordMatch = await compare(password, user.password);
 
     if (!passwordMatch) {
-      throw new Error('username of password invalid');
+      throw new WrongCredentialsError();
     }
 
     const token = sign({ username }, env.CLIENT_SECRET_KEY, {

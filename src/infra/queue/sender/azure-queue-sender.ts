@@ -2,7 +2,7 @@ import { ServiceBusClient, ServiceBusSender, ServiceBusMessage } from '@azure/se
 import { QueueSenderInterface } from './queue-sender';
 import { env } from '../../env';
 
-export class AzureQueue implements QueueSenderInterface {
+export class AzureQueueSender implements QueueSenderInterface {
   queueName: string = 'my-learning-qeue';
   sbClient: ServiceBusClient;
   sender: ServiceBusSender;

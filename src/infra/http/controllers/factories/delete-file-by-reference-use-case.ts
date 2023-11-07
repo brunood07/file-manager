@@ -1,6 +1,6 @@
+import { DeleteFileByReferenceUseCase } from '../../../../domain/file/usecases/delete-file-by-reference-use-case';
+import { PrismaFilesRepository } from '../../../database/prisma-repositories/prisma-files-repository';
 import { AzureStorage } from '../../../storage/azure-storage';
-import { PrismaFilesRepository } from '../../../../file/repositories/prisma/prisma-files-repository';
-import { DeleteFileByReferenceUseCase } from '../../../../file/usecases/delete-file-by-reference-use-case';
 
 export function makeDeleteFileByReferenceUseCase() {
   const filesRepository = new PrismaFilesRepository();

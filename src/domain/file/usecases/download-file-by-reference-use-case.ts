@@ -1,4 +1,5 @@
-import { StorageInterface } from '../../infra/storage/storage';
+import { ResourceNotFoundError } from '../../../core/errors/resource-not-found';
+import { StorageInterface } from '../../../infra/storage/storage';
 
 interface DownloadFileByReferenceUseCaseRequest {
   file_reference: string;
@@ -14,6 +15,10 @@ export class DownloadFileByReferenceUseCase {
     const { file_reference } = data;
     
     const { url } = await this.storage.download(file_reference);
+
+    if (!url) {
+      throw new ResourceNotFoundError();
+    }
     
     return {
       fileUrl: url

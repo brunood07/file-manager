@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { verify } from 'jsonwebtoken';
-import { env } from '../env';
+import { env } from '../../env';
 
 interface IPayload {
     sub: string;

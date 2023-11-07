@@ -5,9 +5,10 @@ export class DeleteFileByReferenceController {
   handle = async (req: Request, res: Response): Promise<Response> => {
     try {
       const params = req.params;
+      const userId = req.user.id;
       
       const service = makeDeleteFileByReferenceUseCase();
-      const result = await service.execute({ file_reference: params.reference });
+      const result = await service.execute({ file_reference: params.reference, userId });
      
       return res.status(204).send(result);
     } catch (err) {

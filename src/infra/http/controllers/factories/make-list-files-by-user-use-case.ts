@@ -1,5 +1,5 @@
-import { PrismaFilesRepository } from '../../../../file/repositories/prisma/prisma-files-repository';
-import { ListFilesByUserUseCase } from '../../../../file/usecases/list-files-by-user-use-case';
+import { ListFilesByUserUseCase } from '../../../../domain/file/usecases/list-files-by-user-use-case';
+import { PrismaFilesRepository } from '../../../database/prisma-repositories/prisma-files-repository';
 
 export function makeListFilesByUserUseCase() {
   const filesRepository = new PrismaFilesRepository();

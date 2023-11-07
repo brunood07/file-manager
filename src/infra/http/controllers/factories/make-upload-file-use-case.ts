@@ -1,11 +1,13 @@
+import { UploadFileUseCase } from '../../../../domain/file/usecases/upload-file-use-case';
+import { PrismaFilesRepository } from '../../../database/prisma-repositories/prisma-files-repository';
+import { AzureQueueSender } from '../../../queue/sender/azure-queue-sender';
 import { AzureStorage } from '../../../storage/azure-storage';
-import { PrismaFilesRepository } from '../../../../file/repositories/prisma/prisma-files-repository';
-import { UploadFileUseCase } from '../../../../file/usecases/upload-file-use-case';
 
 export function makeUploadFileUseCase() {
   const filesRepository = new PrismaFilesRepository();
   const storage = new AzureStorage();
-  const service = new UploadFileUseCase(filesRepository, storage);
+  const queue = new AzureQueueSender();
+  const service = new UploadFileUseCase(filesRepository, storage, queue);
 
   return service; 
 }

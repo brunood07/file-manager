@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { isAuthenticated } from '../../middlewares/is-authenticated';
+import { isAuthenticated } from '../middlewares/is-authenticated';
 import { DeleteFileByReferenceController } from '../controllers/delete-file-by-reference-controller';
 import { DownloadFileByReferenceController } from '../controllers/download-file-by-reference-controller';
 import { ListFilesByUserController } from '../controllers/list-files-by-user-controller';
