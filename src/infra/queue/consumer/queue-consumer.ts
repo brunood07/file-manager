@@ -1,3 +1,3 @@
 export interface QueueConsumerInterface {
-  subscribe(): Promise<void>;
+  subscribe(): Promise<string[]>;
 }

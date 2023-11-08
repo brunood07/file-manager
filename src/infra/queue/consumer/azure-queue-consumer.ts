@@ -12,9 +12,12 @@ export class AzureQueueConsumer implements QueueConsumerInterface {
     this.receiver = this.sbClient.createReceiver(this.queueName);
   }
   
-  async subscribe(): Promise<void> {
+  async subscribe(): Promise<string[]> {
+    const messages = [] as string[];
+
     const myMessageHandler = async (messageReceived: ServiceBusReceivedMessage) => {
       console.log(`Received message: ${messageReceived.body}`);
+      messages.push(messageReceived.body);
     };
 
     const myErrorHandler = async (error: ProcessErrorArgs) => {
@@ -30,5 +33,7 @@ export class AzureQueueConsumer implements QueueConsumerInterface {
 
     await this.receiver.close();
     await this.sbClient.close();
+
+    return messages;
   }
 }
